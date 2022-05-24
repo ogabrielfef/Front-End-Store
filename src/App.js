@@ -1,37 +1,20 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Link, Switch, Router } from 'react-router-dom';
 import './App.css';
-import Header from './Component/Header';
 import Cart from './Component/Cart';
+import Home from './Component/Home';
 
 class App extends React.Component {
-  state = {
-    ready: false,
-  }
-
-  searchItems = () => {
-    this.setState({ ready: true });
-  }
-
   render() {
-    const { ready } = this.state;
     return (
       <div>
         <BrowserRouter>
           <Switch>
-            <Route exact path="/" component={ App } />
+            <Route exact path="/" component={ Home } />
             <Route path="/cart" component={ Cart } />
           </Switch>
+          <Link data-testid="shopping-cart-button" to="/cart">Cart</Link>
         </BrowserRouter>
-        <Header />
-        <input type="text" />
-        <button type="button" onClick={ this.searchItems }>Pesquisar</button>
-        { !ready && (
-          <p
-            data-testid="home-initial-message"
-          >
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </p>) }
       </div>
     );
   }
