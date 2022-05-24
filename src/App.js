@@ -1,24 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={ logo } className="App-logo" alt="logo" />
-        <p>Edit src/App.js and save to reload.</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    ready: false,
+  }
+
+  searchItems = () => {
+    this.setState({ ready: true });
+  }
+
+  render() {
+    const { ready } = this.state;
+    return (
+      <div>
+        <input type="text" />
+        <button type="button" onClick={ this.searchItems }>Pesquisar</button>
+        { !ready && (
+          <p
+            data-testid="home-initial-message"
+          >
+            Digite algum termo de pesquisa ou escolha uma categoria.
+          </p>) }
+      </div>
+    );
+  }
 }
 
 export default App;
