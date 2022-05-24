@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import './App.css';
 import Cart from './Component/Cart';
+import CategoryList from './Component/CategoryList';
 import Home from './Component/Home';
 
 class App extends React.Component {
@@ -15,6 +16,7 @@ class App extends React.Component {
           </Switch>
           <Link data-testid="shopping-cart-button" to="/cart">Cart</Link>
         </BrowserRouter>
+        <CategoryList />
       </div>
     );
   }
