@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { getProductsFromQuery, getProductsFromCategory } from '../services/api';
 import CategoryList from './CategoryList';
 
@@ -34,9 +35,11 @@ class Home extends React.Component {
     const { productCategory } = this.state;
     const elements = productCategory.map((element) => (
       <div key={ element.id } data-testid="product">
-        <p>{element.title}</p>
-        <img src={ element.thumbnail } alt={ element.title } />
-        <p>{element.price}</p>
+        <Link data-testid="product-detail-link" to={ `/product/${element.id}` }>
+          <p>{element.title}</p>
+          <img src={ element.thumbnail } alt={ element.title } />
+          <p>{element.price}</p>
+        </Link>
       </div>
     ));
     return elements;
