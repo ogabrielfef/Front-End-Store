@@ -31,7 +31,7 @@ class Cart extends React.Component {
             {arrayProducts.map((product) => (
               <li key={ product.id }>
                 <p data-testid="shopping-cart-product-name">
-                  {`Produto: ${product.title}`}
+                  {`${product.title}`}
                 </p>
                 <br />
                 <img src={ product.thumbnail } alt={ product.title } />
