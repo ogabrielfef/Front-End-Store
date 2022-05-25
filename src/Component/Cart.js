@@ -3,6 +3,7 @@ import React from 'react';
 class Cart extends React.Component {
   state = {
     arrayProducts: [],
+    value: 1,
   }
 
   componentDidMount = () => {
@@ -16,8 +17,22 @@ class Cart extends React.Component {
     return arrayProducts;
   }
 
+  aumentar = () => {
+    const { value } = this.state;
+    const aumenta = parseInt(value, 10) + 1;
+    this.setState({ value: aumenta });
+  }
+
+  diminuir = () => {
+    const { value } = this.state;
+    if (value >= 2) {
+      const aumenta = parseInt(value, 10) - 1;
+      this.setState({ value: aumenta });
+    }
+  }
+
   render() {
-    const { arrayProducts } = this.state;
+    const { arrayProducts, value } = this.state;
     return (
       <div>
         { !arrayProducts ? (
@@ -38,7 +53,21 @@ class Cart extends React.Component {
                 <br />
                 {`Preço: R$ ${product.price}`}
                 <br />
-                <p data-testid="shopping-cart-product-quantity">1</p>
+                <button
+                  type="button"
+                  onClick={ this.diminuir }
+                  data-testid="product-decrease-quantity"
+                >
+                  Diminuir
+                </button>
+                <p data-testid="shopping-cart-product-quantity">{value}</p>
+                <button
+                  type="button"
+                  onClick={ this.aumentar }
+                  data-testid="product-increase-quantity"
+                >
+                  Aumentar
+                </button>
               </li>))}
           </div>
         )}
