@@ -34,7 +34,7 @@ class CategoryList extends React.Component {
     const { categories } = this.state;
 
     return (
-      <div id="category-css">
+      <div className="category-css">
         { categories !== undefined && this.categoryList() }
       </div>
     );

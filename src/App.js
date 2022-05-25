@@ -34,7 +34,7 @@ class App extends React.Component {
   render() {
     const { categoryReady } = this.state;
     return (
-      <div id="home-css">
+      <div className="home-css">
         <CategoryList click={ this.searchForCategory } />
         <BrowserRouter>
           <Switch>
