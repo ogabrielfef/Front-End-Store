@@ -17,12 +17,22 @@ class Product extends React.Component {
 
     const response = await getProductItemFromId(id.id);
 
-    console.log(response);
-
     this.setState({
       info: response,
       ready: true,
     });
+  }
+
+  getCart = () => {
+    const { info } = this.state;
+    const arrayInfo = [info];
+    const cart = JSON.parse(localStorage.getItem('Products'));
+    if (cart === null) {
+      localStorage.setItem('Products', JSON.stringify(arrayInfo));
+    } else {
+      const addItem = [...cart, info];
+      localStorage.setItem('Products', JSON.stringify(addItem));
+    }
   }
 
   createItem = () => {
@@ -33,6 +43,13 @@ class Product extends React.Component {
         <p data-testid="product-detail-name">{ info.title }</p>
         <img src={ info.thumbnail } alt={ info.title } />
         <p>{ info.price }</p>
+        <button
+          type="button"
+          data-testid="product-detail-add-to-cart"
+          onClick={ this.getCart }
+        >
+          Adicionar ao Carrinho
+        </button>
       </div>
     );
   }
