@@ -20,21 +20,28 @@ class Cart extends React.Component {
     const { arrayProducts } = this.state;
     return (
       <div>
-        <p data-testid="shopping-cart-empty-message" />
-        <div>
-          {arrayProducts.map((product) => (
-            <li key={ product.id }>
-              <p data-testid="shopping-cart-product-name">
-                {`Produto: ${product.title}`}
-              </p>
-              <br />
-              <img src={ product.thumbnail } alt={ product.title } />
-              <br />
-              {`Preço: R$ ${product.price}`}
-              <br />
-              <p data-testid="shopping-cart-product-quantity">1</p>
-            </li>))}
-        </div>
+        { !arrayProducts ? (
+          <p
+            data-testid="shopping-cart-empty-message"
+          >
+            Seu carrinho está vazio
+          </p>
+        ) : (
+          <div>
+            {arrayProducts.map((product) => (
+              <li key={ product.id }>
+                <p data-testid="shopping-cart-product-name">
+                  {`${product.title}`}
+                </p>
+                <br />
+                <img src={ product.thumbnail } alt={ product.title } />
+                <br />
+                {`Preço: R$ ${product.price}`}
+                <br />
+                <p data-testid="shopping-cart-product-quantity">1</p>
+              </li>))}
+          </div>
+        )}
       </div>
     );
   }
