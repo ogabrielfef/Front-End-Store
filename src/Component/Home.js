@@ -10,6 +10,7 @@ class Home extends React.Component {
     arrayProducts: [],
     productCategory: [],
     categoryReady: false,
+    objectProductsCart: [],
   }
 
   getValue = (event) => {
@@ -35,6 +36,16 @@ class Home extends React.Component {
     const { productCategory } = this.state;
     const elements = productCategory.map((element) => (
       <div key={ element.id } data-testid="product">
+        <p>{element.title}</p>
+        <img src={ element.thumbnail } alt={ element.title } />
+        <p>{element.price}</p>
+        <button
+          type="button"
+          data-testid="product-add-to-cart"
+          onClick={ () => this.onAddCart(element) }
+        >
+          Adicionar ao Carrinho
+        </button>
         <Link data-testid="product-detail-link" to={ `/product/${element.id}` }>
           <p>{element.title}</p>
           <img src={ element.thumbnail } alt={ element.title } />
@@ -43,6 +54,17 @@ class Home extends React.Component {
       </div>
     ));
     return elements;
+  }
+
+  onAddCart = (product) => {
+    this.setState((previousState) => (
+      { objectProductsCart: [...previousState.objectProductsCart, product] }),
+    this.saveLocalStorage);
+  }
+
+  saveLocalStorage = () => {
+    const { objectProductsCart } = this.state;
+    localStorage.setItem('Products', JSON.stringify(objectProductsCart));
   }
 
   render() {
@@ -80,6 +102,13 @@ class Home extends React.Component {
               <br />
               {`Preço: R$ ${product.price}`}
               <br />
+              <button
+                type="button"
+                data-testid="product-add-to-cart"
+                onClick={ () => this.onAddCart(product) }
+              >
+                Adicionar ao Carrinho
+              </button>
             </div>
           ))}
         </ul>
