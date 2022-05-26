@@ -32,7 +32,9 @@ class Cart extends React.Component {
   }
 
   setIdsState = (array) => {
-    array.map((product) => this.setState({ [product.id]: 1 }));
+    if (array !== null) {
+      array.map((product) => this.setState({ [product.id]: 1 }));
+    }
   }
 
   setParagrafo = (id) => {
