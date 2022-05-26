@@ -36,9 +36,11 @@ class Home extends React.Component {
     const { productCategory } = this.state;
     const elements = productCategory.map((element) => (
       <div key={ element.id } data-testid="product">
-        <p>{element.title}</p>
-        <img src={ element.thumbnail } alt={ element.title } />
-        <p>{element.price}</p>
+        <Link data-testid="product-detail-link" to={ `/product/${element.id}` }>
+          <p>{element.title}</p>
+          <img src={ element.thumbnail } alt={ element.title } />
+          <p>{element.price}</p>
+        </Link>
         <button
           type="button"
           data-testid="product-add-to-cart"
@@ -46,11 +48,6 @@ class Home extends React.Component {
         >
           Adicionar ao Carrinho
         </button>
-        <Link data-testid="product-detail-link" to={ `/product/${element.id}` }>
-          <p>{element.title}</p>
-          <img src={ element.thumbnail } alt={ element.title } />
-          <p>{element.price}</p>
-        </Link>
       </div>
     ));
     return elements;
@@ -96,12 +93,14 @@ class Home extends React.Component {
         <ul>
           {ready && arrayProducts.map((product) => (
             <div key={ product.id } data-testid="product">
-              {`Produto: ${product.title}`}
-              <br />
-              <img src={ product.thumbnail } alt={ product.title } />
-              <br />
-              {`Preço: R$ ${product.price}`}
-              <br />
+              <Link data-testid="product-detail-link" to={ `/product/${product.id}` }>
+                {`Produto: ${product.title}`}
+                <br />
+                <img src={ product.thumbnail } alt={ product.title } />
+                <br />
+                {`Preço: R$ ${product.price}`}
+                <br />
+              </Link>
               <button
                 type="button"
                 data-testid="product-add-to-cart"
