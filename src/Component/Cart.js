@@ -3,7 +3,6 @@ import React from 'react';
 class Cart extends React.Component {
   state = {
     arrayProducts: [],
-    value: 1,
   }
 
   componentDidMount = () => {
@@ -11,28 +10,38 @@ class Cart extends React.Component {
   }
 
   getProductsLocalStorage = () => {
-    const { arrayProducts } = this.state;
     const productsLocalStorage = JSON.parse(localStorage.getItem('Products'));
     this.setState({ arrayProducts: productsLocalStorage });
-    return arrayProducts;
+    this.setIdsState(productsLocalStorage);
   }
 
-  aumentar = () => {
-    const { value } = this.state;
-    const aumenta = parseInt(value, 10) + 1;
-    this.setState({ value: aumenta });
+  aumentar = (event) => {
+    const target = event.target.className;
+    const { [target]: id } = this.state;
+    const aumenta = parseInt(id, 10) + 1;
+    this.setState({ [target]: aumenta });
   }
 
-  diminuir = () => {
-    const { value } = this.state;
-    if (value >= 2) {
-      const aumenta = parseInt(value, 10) - 1;
-      this.setState({ value: aumenta });
+  diminuir = (event) => {
+    const target = event.target.className;
+    const { [target]: id } = this.state;
+    if (id >= 2) {
+      const diminui = parseInt(id, 10) - 1;
+      this.setState({ [target]: diminui });
     }
   }
 
+  setIdsState = (array) => {
+    array.map((product) => this.setState({ [product.id]: 1 }));
+  }
+
+  setParagrafo = (id) => {
+    const { [id]: product } = this.state;
+    return <p data-testid="shopping-cart-product-quantity">{product}</p>;
+  }
+
   render() {
-    const { arrayProducts, value } = this.state;
+    const { arrayProducts } = this.state;
     return (
       <div>
         { !arrayProducts ? (
@@ -57,14 +66,16 @@ class Cart extends React.Component {
                   type="button"
                   onClick={ this.diminuir }
                   data-testid="product-decrease-quantity"
+                  className={ product.id }
                 >
                   Diminuir
                 </button>
-                <p data-testid="shopping-cart-product-quantity">{value}</p>
+                {this.setParagrafo(product.id)}
                 <button
                   type="button"
                   onClick={ this.aumentar }
                   data-testid="product-increase-quantity"
+                  className={ product.id }
                 >
                   Aumentar
                 </button>
