@@ -10,10 +10,36 @@ class Cart extends React.Component {
   }
 
   getProductsLocalStorage = () => {
-    const { arrayProducts } = this.state;
     const productsLocalStorage = JSON.parse(localStorage.getItem('Products'));
     this.setState({ arrayProducts: productsLocalStorage });
-    return arrayProducts;
+    this.setIdsState(productsLocalStorage);
+  }
+
+  aumentar = (event) => {
+    const target = event.target.className;
+    const { [target]: id } = this.state;
+    const aumenta = parseInt(id, 10) + 1;
+    this.setState({ [target]: aumenta });
+  }
+
+  diminuir = (event) => {
+    const target = event.target.className;
+    const { [target]: id } = this.state;
+    if (id >= 2) {
+      const diminui = parseInt(id, 10) - 1;
+      this.setState({ [target]: diminui });
+    }
+  }
+
+  setIdsState = (array) => {
+    if (array !== null) {
+      array.map((product) => this.setState({ [product.id]: 1 }));
+    }
+  }
+
+  setParagrafo = (id) => {
+    const { [id]: product } = this.state;
+    return <p data-testid="shopping-cart-product-quantity">{product}</p>;
   }
 
   render() {
@@ -38,7 +64,23 @@ class Cart extends React.Component {
                 <br />
                 {`Preço: R$ ${product.price}`}
                 <br />
-                <p data-testid="shopping-cart-product-quantity">1</p>
+                <button
+                  type="button"
+                  onClick={ this.diminuir }
+                  data-testid="product-decrease-quantity"
+                  className={ product.id }
+                >
+                  Diminuir
+                </button>
+                {this.setParagrafo(product.id)}
+                <button
+                  type="button"
+                  onClick={ this.aumentar }
+                  data-testid="product-increase-quantity"
+                  className={ product.id }
+                >
+                  Aumentar
+                </button>
               </li>))}
           </div>
         )}
