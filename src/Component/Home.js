@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { getProductsFromQuery, getProductsFromCategory } from '../services/api';
 import CategoryList from './CategoryList';
+import Header from './Header';
+import './Home.css';
 
 class Home extends React.Component {
   state = {
@@ -35,7 +37,7 @@ class Home extends React.Component {
   elementsCategory = () => {
     const { productCategory } = this.state;
     const elements = productCategory.map((element) => (
-      <div key={ element.id } data-testid="product">
+      <div key={ element.id } data-testid="product" className="card">
         <Link data-testid="product-detail-link" to={ `/product/${element.id}` }>
           <p>{element.title}</p>
           <img src={ element.thumbnail } alt={ element.title } />
@@ -68,50 +70,60 @@ class Home extends React.Component {
     const { ready, value, arrayProducts, categoryReady } = this.state;
     return (
       <div className="home-css">
-        <CategoryList click={ this.searchForCategory } />
-        <div>
-          <input
-            type="text"
-            data-testid="query-input"
-            onChange={ this.getValue }
-            value={ value }
-          />
-          <button
-            type="button"
-            data-testid="query-button"
-            onClick={ this.searchItems }
-          >
-            Pesquisar
-          </button>
-        </div>
-        { !ready && !categoryReady && (
-          <p
-            data-testid="home-initial-message"
-          >
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </p>) }
-        <ul>
-          {ready && arrayProducts.map((product) => (
-            <div key={ product.id } data-testid="product">
-              <Link data-testid="product-detail-link" to={ `/product/${product.id}` }>
-                {`Produto: ${product.title}`}
-                <br />
-                <img src={ product.thumbnail } alt={ product.title } />
-                <br />
-                {`Preço: R$ ${product.price}`}
-                <br />
-              </Link>
+        <Header />
+        <div className="content">
+          <CategoryList click={ this.searchForCategory } />
+          <div className="container">
+            <div className="search">
+              <input
+                type="text"
+                data-testid="query-input"
+                onChange={ this.getValue }
+                value={ value }
+              />
               <button
                 type="button"
-                data-testid="product-add-to-cart"
-                onClick={ () => this.onAddCart(product) }
+                data-testid="query-button"
+                onClick={ this.searchItems }
               >
-                Adicionar ao Carrinho
+                Pesquisar
               </button>
+              <Link data-testid="shopping-cart-button" to="/cart">
+                🛒
+              </Link>
             </div>
-          ))}
-        </ul>
-        <div>{ categoryReady && this.elementsCategory() }</div>
+            { !ready && !categoryReady && (
+              <p
+                data-testid="home-initial-message"
+              >
+                Digite algum termo de pesquisa ou escolha uma categoria.
+              </p>) }
+            <div className="products-list">
+              {ready && arrayProducts.map((product) => (
+                <div key={ product.id } data-testid="product" className="card">
+                  <Link data-testid="product-detail-link" to={ `/product/${product.id}` }>
+                    {`Produto: ${product.title}`}
+                    <br />
+                    <img src={ product.thumbnail } alt={ product.title } />
+                    <br />
+                    {`Preço: R$ ${product.price}`}
+                    <br />
+                  </Link>
+                  <button
+                    type="button"
+                    data-testid="product-add-to-cart"
+                    onClick={ () => this.onAddCart(product) }
+                  >
+                    Adicionar ao Carrinho
+                  </button>
+                </div>
+              ))}
+            </div>
+            <div className="products-list">
+              { categoryReady && this.elementsCategory() }
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

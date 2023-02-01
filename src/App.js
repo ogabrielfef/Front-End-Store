@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Cart from './Component/Cart';
 import Home from './Component/Home';
@@ -15,7 +15,6 @@ class App extends React.Component {
             <Route path="/cart" component={ Cart } />
             <Route path="/product/:id" component={ Product } />
           </Switch>
-          <Link data-testid="shopping-cart-button" to="/cart">Cart</Link>
         </BrowserRouter>
       </div>
     );

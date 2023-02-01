@@ -1,0 +1,14 @@
+.category-css {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 20px;
+  padding: 10px 15px 10px 10px;
+  border: 1px solid black;
+  height: 100%;
+  width: auto;
+  background-color: white;
+}
+
+.category-css input {
+  cursor: pointer;
+}

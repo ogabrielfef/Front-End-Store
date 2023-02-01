@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getProductItemFromId } from '../services/api';
+import './Product.css';
 
 class Product extends React.Component {
   state = {

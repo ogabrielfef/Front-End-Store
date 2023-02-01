@@ -1,9 +1,9 @@
-.category-css {
-  display: flex;
-  flex-direction: column;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.home-css {
-  display: flex;
-  justify-content: space-around;
+body {
+  background-color: #e3e5d7;
 }

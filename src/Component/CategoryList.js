@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getCategories } from '../services/api';
+import './CategoryList.css';
 
 class CategoryList extends React.Component {
   state = {

@@ -1,0 +1,100 @@
+.home-css {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  align-items: center;
+  margin: 0 auto;
+  padding: 25px 30px;
+}
+
+.search {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+}
+
+.search input {
+  width: 600px;
+  height: 30px;
+  border-radius: 30px;
+  font-size: large;
+  text-align: center;
+}
+
+.search button {
+  width: 80px;
+  height: 30px;
+  background: none;
+  border: 2px solid black;
+  border-radius: 30px;
+  margin-left: 5px;
+  margin-right: 90px;
+  background-color: #a5c8ca;
+}
+
+.search button:hover {
+  width: 81px;
+  height: 31px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.products-list {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 20px;
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+  text-align: center;
+  padding: 5px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+}
+
+.card a {
+  text-decoration: none;
+  color: black;
+}
+
+.card img {
+  width: auto;
+  height: 150px;
+  border: 1px solid black;
+}
+
+.card button {
+  background: none;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 150px;
+  height: 25px;
+  margin-top: 10px;
+  background-color: #a5c8ca;
+}
+
+.card button:hover {
+  width: 151px;
+  height: 25px;
+  cursor: pointer;
+  font-weight: bold;
+}
