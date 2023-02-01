@@ -5,21 +5,23 @@
 
 .content {
   display: flex;
+  width: 100vw;
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  width: auto;
   align-items: center;
   margin: 0 auto;
   padding: 25px 30px;
+  width: 100vw;
 }
 
 .search {
   display: flex;
   padding: 20px;
   align-items: center;
+  width: auto;
 }
 
 .search input {
@@ -46,6 +48,18 @@
   height: 31px;
   cursor: pointer;
   font-weight: bold;
+}
+
+.search a {
+  font-size: 30px;
+  text-decoration: none;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.search a:hover {
+  background-color: #a5c8ca;
+  border: 1px solid black;
 }
 
 .products-list {

@@ -41,8 +41,8 @@ class Home extends React.Component {
         <Link data-testid="product-detail-link" to={ `/product/${element.id}` }>
           <p>{element.title}</p>
           <img src={ element.thumbnail } alt={ element.title } />
-          <p>{element.price}</p>
         </Link>
+        <p>{`R$: ${element.price}`}</p>
         <button
           type="button"
           data-testid="product-add-to-cart"
@@ -105,10 +105,10 @@ class Home extends React.Component {
                     {`Produto: ${product.title}`}
                     <br />
                     <img src={ product.thumbnail } alt={ product.title } />
-                    <br />
-                    {`Preço: R$ ${product.price}`}
-                    <br />
                   </Link>
+                  <br />
+                  {`R$: ${product.price}`}
+                  <br />
                   <button
                     type="button"
                     data-testid="product-add-to-cart"

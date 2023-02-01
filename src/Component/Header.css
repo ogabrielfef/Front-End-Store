@@ -4,4 +4,9 @@
   justify-content: center;
   background-color: #586875;
   height: 100px;
+  flex-direction: column;
+}
+
+.header p {
+  text-decoration: overline;
 }

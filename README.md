@@ -2,6 +2,8 @@
 
 <p align="center">
 Front End de uma loja online feito em ReactJs <br/>
+<br/>
+Em caso de dicas, observações ou ajuda você pode entrar em contato comigo por qualquer um dos meios disponibilazados na minha bio. 🙂❤️
 </p>
 
 <p align="center">
@@ -11,10 +13,10 @@ Front End de uma loja online feito em ReactJs <br/>
 
 <br>
 
-⚠️ Projeto passando por algumas alterações de CSS, em breve disponibilizo as mudanças. ⚠️
-<!-- <p align="center">
-  <img alt="projeto DevLinks" src="./assets/Capa.jpg" width="100%">
-</p> -->
+<!-- ⚠️ Projeto passando por algumas alterações de CSS, em breve disponibilizo as mudanças. ⚠️ -->
+<p align="center">
+  <img alt="projeto DevLinks" src="./assets/capa-readme.jpg" width="100%">
+</p>
 
 ## 🚀 Tecnologias
 
